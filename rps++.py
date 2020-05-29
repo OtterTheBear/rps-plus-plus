@@ -22,6 +22,9 @@ exitcode = 0
 
 flashnum = c.A_NORMAL
 
+with open("HELP", "r") as halp:
+    halpstr = halp.read()
+
 # Return what a choice wins against
 def win_against(num):
     if num == 1:
@@ -76,6 +79,13 @@ try:
         elif k == c.KEY_UP:
             if boxy > 0:
                 boxy -= 1
+
+        elif c.keyname(k).decode("utf-8") == "h":
+            stdscr.clear()
+            stdscr.addstr(0, 0, halpstr)
+            stdscr.addstr(maxy - 1, 0, "Press any key to continue...")
+            stdscr.getch()
+            stdscr.clear()
 
         elif c.keyname(k).decode("utf-8") == "^J":
             playerchoice = 1

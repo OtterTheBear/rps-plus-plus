@@ -1,0 +1,28 @@
+Controls:
+
+Arrow keys to move around.
+Enter to select.
+q to quit.
+h for this text.
+
+
+The rules are:
+
+    1. A number wins against the number one lower than it (1 wins against 4).
+    2. A number loses to the number one greater than it (4 loses against 1).
+    3. All other scenarios are draws.
+
+
+List of interactions:
+
+vs  1   2   3   4
+1   D   L   D   W
+2   W   D   L   D
+3   D   W   D   L
+4   L   D   W   D
+
+D = Draw
+L = Loss
+W = Win
+
+The row numbers are your choice and the column numbers are the AI's choice.   
