@@ -83,7 +83,7 @@ try:
         elif c.keyname(k).decode("utf-8") == "h":
             stdscr.clear()
             stdscr.addstr(0, 0, halpstr)
-            stdscr.addstr(maxy - 1, 0, "Press any key to continue...")
+            stdscr.addstr(maxy, 0, "Press any key to continue...")
             stdscr.getch()
             stdscr.clear()
 
