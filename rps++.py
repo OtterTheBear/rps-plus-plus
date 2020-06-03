@@ -2,6 +2,7 @@
 
 import curses as c
 import random as r
+import statistics as s
 stdscr = c.initscr()
 (maxy, maxx) = stdscr.getmaxyx()
 # The method returns sizes not "maximum values"
@@ -61,14 +62,11 @@ try:
         
         k = stdscr.getch()
         
-
-
-
-
         stdscr.addstr(maxy, 0, (c.keyname(k).decode("utf-8") + (" " * (maxx + 1)))[:maxx])
         stdscr.move(7, 0)
         stdscr.clrtoeol()
         stdscr.addstr(0, 0, str(boxx))
+
         if k == c.KEY_RIGHT:
             boxx += 1
         elif k == c.KEY_LEFT:
@@ -98,7 +96,7 @@ try:
             elif (boxx, boxy) == (1, 1):
                 playerchoice = 4
 
-
+            
             if len(playerhist) > 2:
                 if (playerhist[-1] == playerhist[-2] == playerhist[-3]):
                     if r.randint(0, 1):
@@ -109,14 +107,15 @@ try:
                     else:
                         aichoice = playerhist[-1]
                 else:
-                    aichoice = r.randint(1, 4)
+                    if r.randint(0, 1):
+                        try:
+                            aichoice = win_against(win_against(win_against(s.mode(playerhist))))
+                        except s.StatisticsError:
+                            aichoice = r.randint(1, 4)
+                    else:
+                        aichoice = r.randint(1, 4)
             else:
                 aichoice = r.randint(1, 4)
-
-
-
-
-
 
 
             stdscr.addstr(6, 0, f"AI chose {aichoice if aichoice != 0 else 4}, you chose {playerchoice}")
